@@ -3,6 +3,7 @@
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -42,12 +43,12 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/users', [PermissionController::class, 'index'])->name('users.index');
-    Route::get('/users/create', [PermissionController::class, 'create'])->name('users.create');
-    Route::post('/users', [PermissionController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}/edit', [PermissionController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}', [PermissionController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [PermissionController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
 });
 
