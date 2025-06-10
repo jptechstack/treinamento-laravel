@@ -41,6 +41,16 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/users', [PermissionController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [PermissionController::class, 'create'])->name('users.create');
+    Route::post('/users', [PermissionController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [PermissionController::class, 'edit'])->name('users.edit');
+    Route::patch('/users/{user}', [PermissionController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [PermissionController::class, 'destroy'])->name('users.destroy');
+
+});
+
 
 
 require __DIR__.'/auth.php';
